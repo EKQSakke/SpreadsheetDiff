@@ -22,11 +22,17 @@ static class ExcelComparer
                 Console.WriteLine($"Sheet name mismatch: {wb1.Worksheets[i].SheetName} - {wb2.Worksheets[i].SheetName}");
             }
 
-            var columnCount = wb1.Worksheets[i].Columns.Count;
-            for (int j = 0; j < columnCount; j++)
+            if (wb1.Worksheets[i].Columns.Count != wb2.Worksheets[i].Columns.Count)
             {
-                // wb1.Worksheets[i].cell
+                Console.WriteLine($"Column count mismatch in {wb1.Worksheets[i].SheetName} sheet.");
+            }
 
+            foreach (var cell in wb1.Worksheets[i].Cells.Keys)
+            {
+                if (wb1.Worksheets[i].Cells[cell] != wb2.Worksheets[i].Cells[cell])
+                {
+                    Console.WriteLine($"Value updated in cell {cell}, old value {wb1.Worksheets[i].Cells[cell]}, new value {wb2.Worksheets[i].Cells[cell]}");
+                }
             }
         }
     }
