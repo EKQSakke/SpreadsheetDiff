@@ -29,9 +29,9 @@ static class ExcelComparer
 
             foreach (var cell in wb1.Worksheets[i].Cells.Keys)
             {
-                if (wb1.Worksheets[i].Cells[cell] != wb2.Worksheets[i].Cells[cell])
+                if (wb1.Worksheets[i].Cells[cell].Value.ToString() != wb2.Worksheets[i].Cells[cell].Value.ToString())
                 {
-                    Console.WriteLine($"Value updated in cell {cell}, old value {wb1.Worksheets[i].Cells[cell]}, new value {wb2.Worksheets[i].Cells[cell]}");
+                    Console.WriteLine($"Value updated in cell {cell}, old value {wb1.Worksheets[i].Cells[cell].Value}, new value {wb2.Worksheets[i].Cells[cell].Value}");
                 }
             }
         }
